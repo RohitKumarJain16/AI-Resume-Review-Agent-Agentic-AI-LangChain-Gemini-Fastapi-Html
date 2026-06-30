@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Resume Review Agent</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">Resume intelligence</p>
+                <h1>AI Resume Review Agent</h1>
+                <p class="hero-copy">
+                    Upload a PDF resume and get focused feedback from ATS, skills,
+                    project, and HR review agents in one report.
+                </p>
+            </div>
+            <div class="status-pill" id="apiStatus">Checking API...</div>
+        </section>
+
+        <section class="upload-panel">
+            <div class="upload-copy">
+                <h2>Analyze a Resume</h2>
+                <p>PDF files only. Your uploaded file is removed after analysis.</p>
+            </div>
+
+            <label class="file-drop" for="resume">
+                <input id="resume" type="file" accept="application/pdf,.pdf">
+                <span class="file-icon">PDF</span>
+                <span>
+                    <strong id="fileName">Choose a resume PDF</strong>
+                    <small>Click to browse from your computer</small>
+                </span>
+            </label>
+
+            <button id="analyzeBtn" class="primary-btn" type="button">
+                Analyze Resume
+            </button>
+
+            <p id="errorMessage" class="error-message hidden"></p>
+        </section>
+
+        <section id="loading" class="loading hidden" aria-live="polite">
+            <div class="spinner"></div>
+            <div>
+                <strong>Reviewing resume...</strong>
+                <span>Running ATS, skills, project, and HR checks.</span>
+            </div>
+        </section>
+
+        <section id="results" class="results hidden">
+            <div class="score-panel">
+                <div>
+                    <p class="eyebrow">Overall score</p>
+                    <strong id="overallScore">0</strong>
+                </div>
+                <div class="score-track">
+                    <span id="scoreBar"></span>
+                </div>
+            </div>
+
+            <div class="result-grid">
+                <article class="result-card">
+                    <h3>ATS Analysis</h3>
+                    <div id="atsResult" class="result-content"></div>
+                </article>
+
+                <article class="result-card">
+                    <h3>Skills Assessment</h3>
+                    <div id="skillsResult" class="result-content"></div>
+                </article>
+
+                <article class="result-card">
+                    <h3>Project Review</h3>
+                    <div id="projectResult" class="result-content"></div>
+                </article>
+
+                <article class="result-card">
+                    <h3>HR Review</h3>
+                    <div id="hrResult" class="result-content"></div>
+                </article>
+            </div>
+
+            <button id="downloadBtn" class="secondary-btn" type="button">
+                Download Markdown Report
+            </button>
+        </section>
+    </main>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
